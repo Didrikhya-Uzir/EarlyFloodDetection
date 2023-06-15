@@ -95,5 +95,19 @@ void loop() {
       noTone(buzzer);     
     }
     delay(2000);
-  
+  send_data();
+}
+
+void send_data()
+{
+//  int sensorValue = analogRead(A0);
+  mySerial.print('*'); // Starting char
+  mySerial.print(dht.readTemperature(), 0); //2 digit data
+  mySerial.print(dht.readHumidity(), 0); //2 digit data
+  // mySerial.print(w_level,0); //2 digit data
+//  mySerial.print(bmp.readAltitude(seaLevelPressure_hPa * 100) * 100); //5 digit data
+//  mySerial.print(sensorValue); //4 digit data
+//  mySerial.print(map(analogRead(LDR), 0, 1024, 0, 99)); //2 digit data
+//  mySerial.print(map(analogRead(mq135_pin), 0, 1024, 99, 0)); //2 digit data
+  mySerial.println('#'); // Ending char
 }
